@@ -13,7 +13,6 @@ class TreeNode:
 class Solution:
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
         left_view = deque([])
-        result = None
         if not root:
             return None
         else:
@@ -30,4 +29,3 @@ class Solution:
                     if current_node.right:
                         queue.append(current_node.right)
             return left_view[0]
-            
