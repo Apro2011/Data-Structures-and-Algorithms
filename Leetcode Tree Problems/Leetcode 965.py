@@ -10,6 +10,7 @@ class TreeNode:
         self.right = right
 
 
+# Iterative - Breadth First Search
 class Solution:
     def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
         if not root:
@@ -32,3 +33,20 @@ class Solution:
                         else:
                             queue.append(current_node.right)
             return True
+
+
+# Recursive - Depth First Search
+
+class Solution:
+    def working(self, root, check):
+        if not root:
+            return True
+        else:
+            if root.val == check:
+                return self.working(root.left, check) and self.working(root.right, check)
+            elif root.val != check:
+                return False
+
+    def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
+        check = root.val
+        return self.working(root, check)
